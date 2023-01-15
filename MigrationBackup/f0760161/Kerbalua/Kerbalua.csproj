@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' == 'Windows_NT' And Exists('$(SolutionDir)\ksp')">$(SolutionDir)\ksp\KSP_x64_Data\Managed</KerbalLibs>
+    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' != 'Windows_NT' And Exists('$(SolutionDir)\ksp')">$(SolutionDir)\ksp\KSP_Data\Managed</KerbalLibs>
+    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' == 'Windows_NT' ">C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed</KerbalLibs>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F590B1DB-8F33-4986-8383-180952D63CDA}</ProjectGuid>
@@ -22,6 +25,7 @@
     <ConsolePause>false</ConsolePause>
     <NoWarn>3021</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
+    <NoStdLib>true</NoStdLib>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -31,16 +35,22 @@
     <ConsolePause>false</ConsolePause>
     <NoWarn>3021</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
+    <NoStdLib>true</NoStdLib>
   </PropertyGroup>
   <ItemGroup>
-  <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\Assembly*.dll">
-	   <Private>False</Private>
+    <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\Assembly*.dll">
+      <Private>False</Private>
     </Reference>
     <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\UnityEngine*.dll">
-	   <Private>False</Private>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Antlr4.Runtime.Standard, Version=4.11.1.0, Culture=neutral, PublicKeyToken=e78b2c5abd1fcb3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.Standard.4.11.1\lib\net45\Antlr4.Runtime.Standard.dll</HintPath>
+    </Reference>
+    <Reference Include="MoonSharp.Interpreter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=921e73ce94aa17f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\MoonSharp.2.0.0.0\lib\net40-client\MoonSharp.Interpreter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,15 +112,9 @@
       <Project>{A4C93278-A705-4AC2-B2A9-16B30C2E2C36}</Project>
       <Name>MunOS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MunSharp\MunSharp.csproj">
-      <Project>{91EA9B9D-FE03-4273-BDAF-8AD42EDE1E59}</Project>
-      <Name>MunSharp</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Kerbalua\CommonAPI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>

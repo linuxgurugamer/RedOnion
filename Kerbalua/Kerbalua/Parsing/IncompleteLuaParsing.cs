@@ -22,7 +22,7 @@ namespace Kerbalua.Parsing
 
 		static public IncompleteLuaParser GetParser(string source)
 		{
-			ICharStream stream = CharStreams.fromstring(source);
+			ICharStream stream = CharStreams.fromString(source);
 			ITokenSource lexer = new IncompleteLuaLexer(stream);
 			ITokenStream tokens = new CommonTokenStream(lexer);
 

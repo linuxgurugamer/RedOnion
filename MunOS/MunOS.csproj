@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' == 'Windows_NT' And Exists('$(SolutionDir)\ksp')">$(SolutionDir)\ksp\KSP_x64_Data\Managed</KerbalLibs>
-    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' != 'Windows_NT' And Exists('$(SolutionDir)\ksp')">$(SolutionDir)\ksp\KSP_Data\Managed</KerbalLibs>
-    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' == 'Windows_NT' ">C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed</KerbalLibs>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A4C93278-A705-4AC2-B2A9-16B30C2E2C36}</ProjectGuid>
@@ -33,15 +30,14 @@
     <LangVersion>Latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+  <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\Assembly*.dll">
+	   <Private>False</Private>
+    </Reference>
+    <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\UnityEngine*.dll">
+	   <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="UnityEngine">
-      <HintPath>$(KerbalLibs)\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(KerbalLibs)\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
+
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Executors\MunSleepingExecutor.cs" />

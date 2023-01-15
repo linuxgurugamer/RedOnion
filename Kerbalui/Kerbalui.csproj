@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' == 'Windows_NT' And Exists('$(SolutionDir)\ksp')">$(SolutionDir)\ksp\KSP_x64_Data\Managed</KerbalLibs>
-    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' != 'Windows_NT' And Exists('$(SolutionDir)\ksp')">$(SolutionDir)\ksp\KSP_Data\Managed</KerbalLibs>
-    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' == 'Windows_NT' ">C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed</KerbalLibs>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7A943166-A67E-420A-BCA0-5231D57A18BD}</ProjectGuid>
@@ -34,58 +31,20 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr4.Runtime, Version=4.6.0.0, Culture=neutral, PublicKeyToken=09abb75b9ed49849, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.4.6.6\lib\net45\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr4.Runtime.Standard, Version=4.11.1.0, Culture=neutral, PublicKeyToken=e78b2c5abd1fcb3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.Standard.4.11.1\lib\net45\Antlr4.Runtime.Standard.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="Antlr4.Runtime.Standard">
-      <HintPath>..\packages\Antlr4.Runtime.Standard.4.7.1.1\lib\net35\Antlr4.Runtime.Standard.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Security">
-      <HintPath>$(KerbalLibs)\Mono.Security.dll</HintPath>
+    <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\Assembly*.dll">
       <Private>False</Private>
     </Reference>
-    <Reference Include="mscorlib">
-      <HintPath>$(KerbalLibs)\mscorlib.dll</HintPath>
+    <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\UnityEngine*.dll">
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Core">
-      <HintPath>$(KerbalLibs)\System.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System">
-      <HintPath>$(KerbalLibs)\System.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml">
-      <HintPath>$(KerbalLibs)\System.Xml.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>$(KerbalLibs)\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>$(KerbalLibs)\Assembly-CSharp-firstpass.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>$(KerbalLibs)\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(KerbalLibs)\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>$(KerbalLibs)\UnityEngine.IMGUIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>$(KerbalLibs)\UnityEngine.TextRenderingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>$(KerbalLibs)\UnityEngine.InputLegacyModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,20 +96,10 @@
       <Name>RedOnion.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Kerbalui\" />
-    <Folder Include="Kerbalui\Controls\" />
-    <Folder Include="Kerbalui\Decorators\" />
-    <Folder Include="Kerbalui\Layout\" />
-    <Folder Include="Kerbalui\Types\" />
-    <Folder Include="Kerbalui\EventHandling\" />
-    <Folder Include="Kerbalui\Util\" />
-    <Folder Include="Kerbalui\Layout\Abstract\" />
-    <Folder Include="Kerbalui\EditingChanges\" />
-    <Folder Include="Kerbalui\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="DevReadme.md" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

@@ -4,9 +4,6 @@
   <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' == 'Windows_NT' And Exists('$(SolutionDir)\ksp')">$(SolutionDir)\ksp\KSP_x64_Data\Managed</KerbalLibs>
-    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' != 'Windows_NT' And Exists('$(SolutionDir)\ksp')">$(SolutionDir)\ksp\KSP_Data\Managed</KerbalLibs>
-    <KerbalLibs Condition=" '$(KerbalLibs)' == '' And '$(OS)' == 'Windows_NT' ">C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed</KerbalLibs>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7E7D0224-887F-4DFB-93C3-F3738440271A}</ProjectGuid>
@@ -36,16 +33,14 @@
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+  <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\Assembly*.dll">
+	   <Private>False</Private>
+    </Reference>
+    <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\UnityEngine*.dll">
+	   <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="Assembly-CSharp">
-      <HintPath>$(KerbalLibs)\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>$(KerbalLibs)\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(KerbalLibs)\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
+ 
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kerbalua\Kerbalua.csproj">

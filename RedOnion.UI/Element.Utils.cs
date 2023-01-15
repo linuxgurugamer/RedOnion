@@ -35,7 +35,7 @@ namespace RedOnion.UI
 			set => _Skin = value ?? UISkinManager.defaultSkin;
 		}
 
-		protected internal static byte[] ResourceFileData(Assembly asm, string kind, ref ZipFile zip, string path)
+		protected internal static byte[] ResourceFileData(Assembly asm, string kind, ref Ionic.Zip.ZipFile zip, string path)
 		{
 			// assume asm.Location points to GameData/RedOnion/Plugis/RedOnion.dll (or any other dll)
 			var root = Path.Combine(Path.GetDirectoryName(asm.Location), "..");

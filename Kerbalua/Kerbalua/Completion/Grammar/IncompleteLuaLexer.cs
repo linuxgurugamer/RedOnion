@@ -113,7 +113,7 @@ public partial class IncompleteLuaLexer : Lexer {
 
 	public override string[] ModeNames { get { return modeNames; } }
 
-	public override string SerializedAtn { get { return new string(_serializedATN); } }
+	public override int[] SerializedAtn { get { return _serializedATN; } }
 
 	static IncompleteLuaLexer() {
 		decisionToDFA = new DFA[_ATN.NumberOfDecisions];
@@ -121,7 +121,7 @@ public partial class IncompleteLuaLexer : Lexer {
 			decisionToDFA[i] = new DFA(_ATN.GetDecisionState(i), i);
 		}
 	}
-	private static char[] _serializedATN = {
+	private static int[] _serializedATN = {
 		'\x3', '\x608B', '\xA72A', '\x8133', '\xB9ED', '\x417C', '\x3BE7', '\x7786', 
 		'\x5964', '\x2', '\x45', '\x25B', '\b', '\x1', '\x4', '\x2', '\t', '\x2', 
 		'\x4', '\x3', '\t', '\x3', '\x4', '\x4', '\t', '\x4', '\x4', '\x5', '\t', 

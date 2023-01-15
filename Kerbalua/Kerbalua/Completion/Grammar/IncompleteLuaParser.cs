@@ -117,7 +117,7 @@ public partial class IncompleteLuaParser : Parser {
 
 	public override string[] RuleNames { get { return ruleNames; } }
 
-	public override string SerializedAtn { get { return new string(_serializedATN); } }
+	public override int[] SerializedAtn { get { return _serializedATN; } }
 
 	static IncompleteLuaParser() {
 		decisionToDFA = new DFA[_ATN.NumberOfDecisions];
@@ -5012,7 +5012,7 @@ public partial class IncompleteLuaParser : Parser {
 		return true;
 	}
 
-	private static char[] _serializedATN = {
+	private static int[] _serializedATN = {
 		'\x3', '\x608B', '\xA72A', '\x8133', '\xB9ED', '\x417C', '\x3BE7', '\x7786', 
 		'\x5964', '\x3', '\x45', '\x35E', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
 		'\t', '\x3', '\x4', '\x4', '\t', '\x4', '\x4', '\x5', '\t', '\x5', '\x4', 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
@@ -102,7 +102,7 @@ namespace Kerbalua.Completion
 
 		static public ProcessedIncompleteVar Parse(string str)
 		{
-			ICharStream stream = CharStreams.fromstring(str);
+			ICharStream stream = CharStreams.fromString(str);
 			ITokenSource lexer = new IncompleteLuaLexer(stream);
 			ITokenStream tokens = new CommonTokenStream(lexer);
 
